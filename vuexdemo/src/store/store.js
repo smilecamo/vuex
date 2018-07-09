@@ -5,17 +5,19 @@ Vue.use(Vuex)
 
 // 状态对象 共享值
 const state = {
-  count: 1,
-  count1: 3
+  count: 1
 }
 // 改变状态对象的方法
 const mutations = {
-  add: state => state.count++,
-  reduce: state => state.count--,
-  add3: state => state.count1++,
-  reduce3: state => state.count1--
+  add: (state, n) => (state.count += n),
+  reduce: state => state.count--
+}
+// 过滤计算属性
+const getters = {
+  count: state => (state.count += 100)
 }
 export default new Vuex.Store({
   state,
-  mutations
+  mutations,
+  getters
 })
