@@ -16,8 +16,21 @@ const mutations = {
 const getters = {
   count: state => (state.count += 100)
 }
+const actions = {
+  addAction (context) {
+    context.commit('add', 10)
+    setTimeout(() => {
+      context.commit('reduce')
+    }, 5000)
+    console.log('object')
+  },
+  reduceAction ({commit}) {
+    commit('reduce')
+  }
+}
 export default new Vuex.Store({
   state,
   mutations,
-  getters
+  getters,
+  actions
 })
