@@ -1,14 +1,14 @@
 <template>
   <div>
-    {{msg}}--{{$router.username}}--{{$router.id}}
+   {{msg}}
   </div>
 </template>
 <script>
 export default {
-  name: 'HelloWorld2',
+  name: 'Hi2',
   data () {
     return {
-      msg: '主页面下的子页面'
+      msg: 'I Hi2'
     }
   }
 }
