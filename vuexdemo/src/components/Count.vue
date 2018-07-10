@@ -17,7 +17,7 @@
 <script>
 import store from '@/store/store'
 // 第二种访问对象
-import { mapState, mapMutations, mapGetters, mapActions,} from 'Vuex'
+import {mapState, mapMutations, mapActions} from 'Vuex'
 
 export default {
   name: 'Count',
@@ -43,14 +43,14 @@ export default {
   // computed: mapState(['count']),
 
   computed: {
-    ...mapState(['count']),
-    //扩展运算符
+    ...mapState(['count'])
+    // 扩展运算符
     // ...mapGetters(['count'])
   },
 
   methods: {
     ...mapMutations(['add', 'reduce']),
-    ...mapActions(['addAction','reduceAction'])
+    ...mapActions(['addAction', 'reduceAction'])
   },
   store
 }
