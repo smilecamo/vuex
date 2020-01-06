@@ -1,10 +1,19 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition name="fade">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
 <style lang="scss">
+.fade-enter-active,.fade-leave-active{
+  transition: opacity .5s
+}
+.fade-enter,.fade-leave-to{
+  opacity: 0;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
