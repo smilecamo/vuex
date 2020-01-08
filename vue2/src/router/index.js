@@ -1,23 +1,23 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 // 自动化注入路由函数
-// const requireComponent = require.context("../views", true, /\.vue$/);
-// const routes = requireComponent.keys().map(fileName => {
-//   // 全局注册组件
-//   const componentName = fileName.replace(/^\.\/(.*)\.\w+$/, "$1");
-//   return {
-//     path: `/${componentName}`,
-//     name: componentName, //路由命名
-//     component: () => import(`../views/${componentName}.vue`)
-//   };
-// });
+const requireComponent = require.context("../views", true, /\.vue$/);
+const routes = requireComponent.keys().map(fileName => {
+  // 全局注册组件
+  const componentName = fileName.replace(/^\.\/(.*)\.\w+$/, "$1");
+  return {
+    path: `/${componentName}`,
+    name: componentName, //路由命名
+    component: () => import(`../views/${componentName}.vue`)
+  };
+});
 // const routes =[{}]
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: "/about/:id?", 
+      path: "/v2/about/:id?", 
       /** 
        * :id 代表要传的参数 ? 代表可传可不传
        * 此时这样可以在组件中通过this.$route.params.id 来获取传递的参数
@@ -29,7 +29,6 @@ export default new Router({
       // redirect: "/about",
       name: "aboutPage",
       component: () => import("../views/About.vue"),
-
       meta: {
         title: "this is page",
         requiresAuth: true
@@ -41,13 +40,13 @@ export default new Router({
           component: () => import("../views/slot.vue")
         }
       ]
-    }
+    },
     /**
      *命名路由:在路由中通过name来命令
      *在<router-link :to="{name:'aboutPage'}"">中跳转
      *在router.push({name:'aboutPage'}) 中跳转
      */
-    // ...routes
+    ...routes
   ],
   mode: "hash", // hash 路由带# history 不带# 能呗爬虫爬取
   base: "/base/", // 给路由增加基础前缀 /base/about
@@ -72,3 +71,4 @@ export default new Router({
   fallback: true // 当浏览器不支持 history.pushState
   //控制路由是否应该回退到 hash 模式。默认值为 true。
 });
+
