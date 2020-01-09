@@ -1,6 +1,5 @@
-
 export default{
-  updateCount(state,num){
-    state.count = num
-  }
+updateCount(state, num) {
+  state.count = num
+}
 }
