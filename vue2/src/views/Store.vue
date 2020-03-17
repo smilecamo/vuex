@@ -1,21 +1,21 @@
 <template>
   <div>
     <h2>Vuex使用</h2>
-    <p>原始值 ===={{count}}</p>
+    <p>原始值 ====  {{count}}</p>
     <button @click="btnChangeCount"> 通过mutations改变值</button>
-    <button @click="btnChangeAsyncCount"> 通过actions改变值</button>
+    <button @click="btnChangeAsyncCount"> 通过actions改变值</button> 
     <!-- 通过computed中定义的,可以直接调用 -->
-    <p>fullName===={{fullName}}</p>
+    <p>fullName====  {{fullName}}</p>
   </div>
 </template>
 
 <script>
 import { mapState,mapGetters,mapActions,mapMutations} from 'vuex'
   export default {
-    mounted(){
+    // mounted(){
       // 从vuex中的state取值
       // this.count= this.$store.state.count
-    },
+    // },
     computed:{
       // 第一种获取getters的方法
       // fullName(){
